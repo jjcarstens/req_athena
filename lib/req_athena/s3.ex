@@ -6,6 +6,7 @@ defmodule ReqAthena.S3 do
 
   def get_locations(req_s3, manifest_location) do
     req_s3
+    |> Req.merge(decode_body: false)
     |> get_body(manifest_location)
     |> String.trim()
     |> String.split("\n")
